@@ -1,0 +1,32 @@
+server:
+  port: 9070
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 9090
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 3000
+
+zuul:
+  routes:
+    aluno:
+      path: /services/aluno/**
+      url: http://localhost:9098/alunos/
+    professor:
+      path: /services/professor/**
+      url: http://localhost:9099/professores/
+    curso:
+      path: /services/curso/**
+      url: http://localhost:9097/cursos/
+    professor:
+      path: /services/disciplina/**
+      url: http://localhost:9096/disciplinas/
+    matricula:
+      path: /services/matricula/**
+      url: http://localhost:9095/matriculas/

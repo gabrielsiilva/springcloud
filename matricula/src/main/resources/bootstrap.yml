@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: matricula
+  cloud:
+    config:
+      uri: http://localhost:9080
